@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Class XI | Digital Universe</title>
+    <title>Web Class XI | Ethereal Universe</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -25,7 +25,6 @@
             overflow-x: hidden;
         }
 
-        /* Background Animasi Plasma */
         #canvas-plasma {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -34,7 +33,6 @@
             opacity: 0.5;
         }
 
-        /* Navbar Modern */
         nav {
             position: fixed;
             top: 20px; left: 50%;
@@ -54,24 +52,22 @@
 
         .logo { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--main); letter-spacing: 2px; }
 
-        /* Hero Section dengan Glitch */
         .hero {
-            height: 100vh;
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            perspective: 1000px;
+            text-align: center;
         }
 
         .glitch {
             font-family: 'Syncopate', sans-serif;
-            font-size: clamp(3rem, 10vw, 6rem);
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 700;
             text-transform: uppercase;
             position: relative;
-            text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 var(--main),
-                         0.025em 0.05em 0 #fffc00;
+            text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 var(--main);
             animation: glitch 500ms infinite;
         }
 
@@ -81,83 +77,50 @@
             100% { text-shadow: -0.025em 0.05em 0 var(--accent), -0.025em -0.05em 0 var(--main); }
         }
 
-        /* Floating Cards Section */
-        .section { padding: 100px 5%; text-align: center; }
-        h2.title { font-family: 'Syncopate', sans-serif; margin-bottom: 50px; font-size: 2rem; color: var(--main); }
+        .section { padding: 60px 5%; text-align: center; }
+        h2.title { font-family: 'Syncopate', sans-serif; margin-bottom: 50px; font-size: 2rem; color: var(--main); text-transform: uppercase; }
 
         .container-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
         }
 
         .neo-card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            overflow: hidden;
+            border-radius: 20px;
+            padding: 25px;
+            transition: 0.4s;
             backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .neo-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
             border-color: var(--main);
-            box-shadow: 0 20px 40px rgba(0, 255, 240, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 255, 240, 0.1);
         }
 
-        .neo-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
-
-        /* Gallery Neon */
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
+        .ig-avatar {
+            width: 80px; height: 80px; margin-bottom: 15px;
+            border-radius: 50%; padding: 3px;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
         }
+        .ig-avatar img { width: 100%; height: 100%; border-radius: 50%; border: 2px solid var(--dark); object-fit: cover; }
 
-        .pic {
-            border-radius: 15px;
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            transition: 0.4s;
-            cursor: pointer;
-            border: 2px solid transparent;
+        .ig-btn {
+            display: inline-block; padding: 8px 18px;
+            border: 1px solid var(--main); color: var(--main);
+            text-decoration: none; border-radius: 5px;
+            font-size: 0.7rem; font-weight: bold; transition: 0.3s;
+            margin-top: 10px;
         }
+        .ig-btn:hover { background: var(--main); color: black; }
 
-        .pic:hover {
-            border-color: var(--main);
-            transform: rotate(2deg) scale(1.05);
-            z-index: 10;
-        }
-
-        footer {
-            padding: 40px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: #666;
-        }
-
-        /* Tombol Mengambang */
-        .btn-join {
-            background: linear-gradient(45deg, var(--main), var(--accent));
-            padding: 15px 40px;
-            border-radius: 50px;
-            color: black;
-            font-weight: 700;
-            text-decoration: none;
-            margin-top: 40px;
-            display: inline-block;
-            transition: 0.3s;
-        }
-
-        .btn-join:hover { box-shadow: 0 0 30px var(--main); transform: scale(1.1); }
+        footer { padding: 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; color: #666; }
     </style>
 </head>
 <body>
@@ -166,251 +129,163 @@
 
     <nav>
         <div class="logo">GEN-Z</div>
-        <div style="font-size: 0.8rem; letter-spacing: 1px;">EST. 2024-2027</div>
+        <div style="font-size: 0.7rem;">EST. 2024-2027</div>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="glitch" data-text="X-RPL 1">ETHEREAL XI</div>
+    <section class="hero">
+        <div class="glitch">ETHEREAL XI</div>
         <p style="letter-spacing: 5px; opacity: 0.6; margin-top: 20px;">SMAIT DARUSSALAM 01 BATAM</p>
-        <a href="#about" class="btn-join">AYO DI KLIK</a>
     </section>
 
-    <section class="section" id="about">
-        <h2 class="title" data-aos="fade-up">CORE MISSION</h2>
-        <div class="neo-card" data-aos="zoom-in" style="max-width: 800px; margin: 0 auto;">
-            <p style="font-size: 1.2rem; line-height: 1.8;">Membangun kelas yang kreatif dan skil tanpa batas. Kami bukan sekadar kelas, kami adalah keluarga yang selalu bersama.</p>
-        </div>
-        <section class="section" id="squad">
+    <section class="section">
         <h2 class="title" data-aos="fade-up">SOCIAL SQUAD</h2>
         <div class="container-grid">
             
             <div class="neo-card" data-aos="zoom-in">
-                <div class="ig-avatar">
-                    <img src="https://ui-avatars.com/api/?name=Admin+Mio&background=00fff0&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">HAKIM</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@Kimmaja._</p>
-                <a href="https://instagram.com/kimmaja._" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div>
-            <div class="neo-card" data-aos="zoom-in" data-aos-delay="100">
-                <div class="ig-avatar">
-                    <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=ff00c1&color=fff" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">KAYSAN</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@sannn_dhii</p>
-                <a href="https://instagram.com/sannn_dhii" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Hakim&background=00fff0&color=000"></div>
+                <h3>HAKIM</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@Kimmaja._</p>
+                <a href="https://instagram.com/kimmaja._" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
             </div>
 
-            <div class="neo-card" data-aos="zoom-in" data-aos-delay="200">
-                <div class="ig-avatar">
-                    <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">HANIF</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@_nifff18______</p>
-                <a href="https://instagram.com/_nifff18______" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div>    <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">IHSAL</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@i_caaaaal</p>
-                <a href="https://instagram.com/i_caaaaal" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Kaysan&background=ff00c1&color=fff"></div>
+                <h3>KAYSAN</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@sannn_dhii</p>
+                <a href="https://instagram.com/sannn_dhii" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">TENGKU</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@tengkuuirwans</p>
-                <a href="https://instagram.com/tengkuuirwans" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Hanif&background=fffc00&color=000"></div>
+                <h3>HANIF</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@_nifff18______</p>
+                <a href="https://instagram.com/_nifff18______" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">YUDY</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@faidytale__v</p>
-                <a href="https://instagram.com/faidytale__v" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Ihsal&background=random"></div>
+                <h3>IHSAL</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@i_caaaaal</p>
+                <a href="https://instagram.com/i_caaaaal" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">MARVEL</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@capten_.haa</p>
-                <a href="https://instagram.com/capten_.haa" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Tengku&background=random"></div>
+                <h3>TENGKU</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@tengkuuirwans</p>
+                <a href="https://instagram.com/tengkuuirwans" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">AKBAR</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@skbarrr._</p>
-                <a href="https://instagram.com/skbarrr._" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Yudy&background=random"></div>
+                <h3>YUDY</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@faidytale__v</p>
+                <a href="https://instagram.com/faidytale__v" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">BAKHAS</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@bakhaspaladew</p>
-                <a href="https://instagram.com/bakhaspaladew" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Marvel&background=random"></div>
+                <h3>MARVEL</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@capten_.haa</p>
+                <a href="https://instagram.com/capten_.haa" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">RATU</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@ratu5.888</p>
-                <a href="https://instagram.com/ratu5.888" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Akbar&background=random"></div>
+                <h3>AKBAR</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@skbarrr._</p>
+                <a href="https://instagram.com/skbarrr._" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">KHANSA</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@mo0chaa4_</p>
-                <a href="https://instagram.com/mo0chaa4_" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Bakhas&background=random"></div>
+                <h3>BAKHAS</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@bakhaspaladew</p>
+                <a href="https://instagram.com/bakhaspaladew" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">TIARA</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@ftiiaraaa</p>
-                <a href="https://instagram.com/ftiiaraaa" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Ratu&background=random"></div>
+                <h3>RATU</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@ratu5.888</p>
+                <a href="https://instagram.com/ratu5.888" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">GHAIDA</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@ghaidagayatry</p>
-                <a href="https://instagram.com/ghaidagayatry" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Khansa&background=random"></div>
+                <h3>KHANSA</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@mo0chaa4_</p>
+                <a href="https://instagram.com/mo0chaa4_" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">NAILA</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@naiinrfzh_</p>
-                <a href="https://instagram.com/naiinrfzh_" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Tiara&background=random"></div>
+                <h3>TIARA</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@ftiiaraaa</p>
+                <a href="https://instagram.com/ftiiaraaa" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">HIKMAH</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@g2.slep___</p>
-                <a href="https://instagram.com/g2.slep___" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Ghaida&background=random"></div>
+                <h3>GHAIDA</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@ghaidagayatry</p>
+                <a href="https://instagram.com/ghaidagayatry" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">DINDA</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@ndaydaaa</p>
-                <a href="https://instagram.com/ndaydaaa" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Naila&background=random"></div>
+                <h3>NAILA</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@naiinrfzh_</p>
+                <a href="https://instagram.com/naiinrfzh_" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-               <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=fffc00&color=000" alt="User">
-                </div>
-                <h3 style="margin-top: 15px;">RIFDA</h3>
-                <p style="color: var(--accent); font-size: 0.8rem; margin-bottom: 15px;">@rifdanaurakhotimah</p>
-                <a href="https://instagram.com/rifdanaurakhotimah" target="_blank" class="ig-btn">
-                    <i class="fab fa-instagram"></i> FOLLOW
-                </a>
-            </div> 
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Hikmah&background=random"></div>
+                <h3>HIKMAH</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@g2.slep___</p>
+                <a href="https://instagram.com/g2.slep___" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
 
-             
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Dinda&background=random"></div>
+                <h3>DINDA</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@ndaydaaa</p>
+                <a href="https://instagram.com/ndaydaaa" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
+
+            <div class="neo-card" data-aos="zoom-in">
+                <div class="ig-avatar"><img src="https://ui-avatars.com/api/?name=Rifda&background=random"></div>
+                <h3>RIFDA</h3>
+                <p style="color: var(--accent); font-size: 0.8rem;">@rifdanaurakhotimah</p>
+                <a href="https://instagram.com/rifdanaurakhotimah" target="_blank" class="ig-btn"><i class="fab fa-instagram"></i> FOLLOW</a>
+            </div>
+
         </div>
-    </section>
-
-    <style>
-        .ig-avatar {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto;
-            border-radius: 50%;
-            padding: 3px;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-        }
-        .ig-avatar img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px solid var(--dark);
-        }
-        .ig-btn {
-            display: inline-block;
-            padding: 8px 20px;
-            border: 1px solid var(--main);
-            color: var(--main);
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .ig-btn:hover {
-            background: var(--main);
-            color: black;
-            box-shadow: 0 0 15px var(--main);
-        }
-    </style>
     </section>
 
     <section class="section">
         <h2 class="title" data-aos="fade-up">CLASS MASTERS</h2>
         <div class="container-grid">
-            <div class="neo-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-bolt"></i>
+            <div class="neo-card" data-aos="fade-up">
+                <i class="fas fa-bolt" style="font-size: 2rem; color: var(--main); margin-bottom: 10px;"></i>
                 <h3>LEADER</h3>
                 <p>KAYSAN DHIYA RABBANI</p>
             </div>
-            <div class="neo-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-shield-halved"></i>
+            <div class="neo-card" data-aos="fade-up">
+                <i class="fas fa-shield-halved" style="font-size: 2rem; color: var(--main); margin-bottom: 10px;"></i>
                 <h3>CO-LEADER</h3>
                 <p>SAIFUL AKBAR</p>
             </div>
-            <div class="neo-card" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-code"></i>
+            <div class="neo-card" data-aos="fade-up">
+                <i class="fas fa-code" style="font-size: 2rem; color: var(--main); margin-bottom: 10px;"></i>
                 <h3>SCRIBE</h3>
-                <p>GHAIDA GHAYATRI,NAILA NURFAIZAH</p>
+                <p>GHAIDA, NAILA</p>
             </div>
-            <div class="neo-card" data-aos="fade-up" data-aos-delay="400">
-                <i class="fas fa-vault"></i>
+            <div class="neo-card" data-aos="fade-up">
+                <i class="fas fa-vault" style="font-size: 2rem; color: var(--main); margin-bottom: 10px;"></i>
                 <h3>TREASURY</h3>
-                <p>RATU SYAHWANA,FATIH TIARA/p>
+                <p>RATU, FATIH TIARA</p>
             </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2 class="title" data-aos="fade-up">MEMORY DATA</h2>
-        <div class="gallery-container">
-            <div class="pic" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=500')" data-aos="flip-right"></div>
-            <div class="pic" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=500')" data-aos="flip-left"></div>
-            <div class="pic" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=500')" data-aos="flip-right"></div>
-            <div class="pic" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=500')" data-aos="flip-left"></div>
         </div>
     </section>
 
@@ -420,45 +295,25 @@
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800 });
-
-        // Efek Plasma Background (Animasi tanpa library berat)
+        AOS.init({ duration: 800, once: true });
         const canvas = document.getElementById('canvas-plasma');
         const ctx = canvas.getContext('2d');
         let time = 0;
-
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.onresize = resize;
-        resize();
-
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.onresize = resize; resize();
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
             const x = Math.sin(time) * 100 + canvas.width / 2;
             const y = Math.cos(time * 0.5) * 100 + canvas.height / 2;
-
             const grd = ctx.createRadialGradient(x, y, 0, x, y, 400);
-            grd.addColorStop(0, '#00fff0');
-            grd.addColorStop(1, 'transparent');
-
-            ctx.fillStyle = grd;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+            grd.addColorStop(0, '#00fff0'); grd.addColorStop(1, 'transparent');
+            ctx.fillStyle = grd; ctx.fillRect(0, 0, canvas.width, canvas.height);
             const x2 = Math.cos(time) * 150 + canvas.width / 2;
             const y2 = Math.sin(time * 0.8) * 150 + canvas.height / 2;
-
             const grd2 = ctx.createRadialGradient(x2, y2, 0, x2, y2, 500);
-            grd2.addColorStop(0, '#ff00c1');
-            grd2.addColorStop(1, 'transparent');
-
-            ctx.fillStyle = grd2;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            time += 0.02;
-            requestAnimationFrame(animate);
+            grd2.addColorStop(0, '#ff00c1'); grd2.addColorStop(1, 'transparent');
+            ctx.fillStyle = grd2; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            time += 0.02; requestAnimationFrame(animate);
         }
         animate();
     </script>
