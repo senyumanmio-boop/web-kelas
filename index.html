@@ -3,175 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEB KELAS EXCLUSIVE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>The Elite Class | Official Website</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        /* SEMUA CSS DI SINI */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        
+        :root {
+            --primary: #00f2fe;
+            --secondary: #7000ff;
+            --bg: #030005;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #050505;
+            background-color: var(--bg);
             color: white;
+            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
 
-        /* Efek Gradient di Background */
-        body::before {
-            content: "";
+        /* Particles Background */
+        #particles-js {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a0b2e 0%, #050505 100%);
+            width: 100%;
+            height: 100%;
             z-index: -1;
         }
 
-        header {
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        /* Hero Section */
+        .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523050335392-938511794244?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-attachment: fixed;
+            background: radial-gradient(circle at center, rgba(112, 0, 255, 0.2) 0%, transparent 70%);
         }
 
-        h1 { font-size: 4rem; letter-spacing: 5px; color: #00f2fe; text-shadow: 0 0 20px #00f2fe; }
-        p { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; }
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
 
-        .container { padding: 80px 10% text-align: center; }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px var(--primary); }
+            to { text-shadow: 0 0 20px #fff, 0 0 40px var(--secondary); }
+        }
 
-        /* Kartu Pengurus yang Menyala */
-        .grid-pengurus {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        /* Glass Cards */
+        .section { padding: 100px 10%; text-align: center; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.05);
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
             padding: 40px;
             border-radius: 20px;
-            width: 280px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: 0.4s;
+            backdrop-filter: blur(15px);
+            transition: 0.5s;
             position: relative;
-            overflow: hidden;
         }
 
-        .card:hover {
-            transform: translateY(-15px);
-            border-color: #00f2fe;
-            box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
+        .glass-card:hover {
+            transform: translateY(-20px) rotateX(10deg);
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        .card h3 { color: #00f2fe; margin-bottom: 10px; font-size: 1.5rem; }
+        .glass-card i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
 
-        /* Galeri Foto */
-        .galeri {
+        /* Gallery */
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            margin-top: 50px;
         }
 
-        .galeri img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
+        .gallery-item {
+            height: 300px;
             border-radius: 15px;
-            filter: grayscale(100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover;
             transition: 0.5s;
         }
 
-        .galeri img:hover {
-            filter: grayscale(0%);
-            transform: scale(1.05);
+        .gallery-item:hover img { transform: scale(1.2); filter: brightness(0.5); }
+
+        .overlay-text {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: white; opacity: 0; transition: 0.5s;
+            font-weight: bold;
         }
+
+        .gallery-item:hover .overlay-text { opacity: 1; }
 
         footer {
             padding: 50px;
-            background: #000;
             text-align: center;
-            font-size: 0.9rem;
-            border-top: 1px solid #222;
+            border-top: 1px solid var(--border);
+            background: rgba(0,0,0,0.5);
         }
 
-        .btn {
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: #00f2fe;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            transition: 0.3s;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { padding: 20px; }
+            .nav-links { display: none; }
         }
-
-        .btn:hover { box-shadow: 0 0 20px #00f2fe; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1 id="nama-kelas">NAMA KELAS</h1>
-        <p>Together We Are Stronger | Created by Senyuman Mio</p>
-        <a href="#about" class="btn">LIHAT KELAS</a>
+    <div id="particles-js"></div>
+    <div class="cursor"></div>
+
+    <nav>
+        <div class="logo">ELITE CLASS</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#structure">Structure</a>
+            <a href="#gallery">Gallery</a>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1 data-aos="zoom-in">X - RPL 1</h1>
+        <p data-aos="fade-up" data-aos-delay="200">The Next Generation of Technology & Innovation</p>
+        <div style="margin-top: 30px;">
+            <a href="#about" class="glass-card" style="padding: 15px 40px; text-decoration: none; color: white;">EXPLORE NOW</a>
+        </div>
     </header>
 
-    <div class="container" id="about">
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">PENGURUS KELAS</h2>
-        <div class="grid-pengurus">
-            <div class="card">
-                <h3>KETUA</h3>
-                <p>Nama Ketua Kamu</p>
+    <section class="section" id="about">
+        <h2 data-aos="fade-down">ABOUT US</h2>
+        <div class="glass-card" style="margin-top: 30px;" data-aos="fade-up">
+            <p>Kami bukan sekadar teman sekelas, kami adalah keluarga besar yang berjuang bersama untuk masa depan. Dengan semangat kreativitas dan teknologi, kami siap mengguncang dunia.</p>
+        </div>
+    </section>
+
+    <section class="section" id="structure">
+        <h2 data-aos="fade-down">CLASS STRUCTURE</h2>
+        <div class="grid">
+            <div class="glass-card" data-aos="flip-left">
+                <i class="fas fa-crown"></i>
+                <h3>PRESIDENT</h3>
+                <p>Nama Ketua Kelas</p>
             </div>
-            <div class="card">
-                <h3>WAKIL</h3>
-                <p>Nama Wakil Kamu</p>
+            <div class="glass-card" data-aos="flip-left" data-aos-delay="200">
+                <i class="fas fa-handshake"></i>
+                <h3>VICE PRESIDENT</h3>
+                <p>Nama Wakil Ketua</p>
             </div>
-            <div class="card">
-                <h3>SEKRETARIS</h3>
+            <div class="glass-card" data-aos="flip-left" data-aos-delay="400">
+                <i class="fas fa-pen-nib"></i>
+                <h3>SECRETARY</h3>
                 <p>Nama Sekretaris</p>
             </div>
-            <div class="card">
-                <h3>BENDAHARA</h3>
+            <div class="glass-card" data-aos="flip-left" data-aos-delay="600">
+                <i class="fas fa-wallet"></i>
+                <h3>TREASURER</h3>
                 <p>Nama Bendahara</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container">
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">GALLERY MOMENT</h2>
-        <div class="galeri">
-            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=500&q=60" alt="Foto 1">
-            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=500&q=60" alt="Foto 2">
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=500&q=60" alt="Foto 3">
-            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=500&q=60" alt="Foto 4">
+    <section class="section" id="gallery">
+        <h2 data-aos="fade-down">CLASS GALLERY</h2>
+        <div class="gallery-grid" style="margin-top: 50px;">
+            <div class="gallery-item" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80"><div class="overlay-text">Study Time</div></div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80"><div class="overlay-text">Togetherness</div></div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80"><div class="overlay-text">Friendship</div></div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80"><div class="overlay-text">Solidarity</div></div>
         </div>
-    </div>
+    </section>
 
     <footer>
-        <p>&copy; 2024 Website Kelas. Powered by GitHub Pages.</p>
+        <p>Created with Passion by <span style="color:var(--primary)">Senyuman Mio</span> &copy; 2026</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Sedikit animasi ketik untuk nama kelas
-        const text = "WELCOME TO OUR CLASS";
-        let i = 0;
-        function typeWriter() {
-            if (i < text.length) {
-                document.getElementById("nama-kelas").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
+        // Inisialisasi AOS (Animasi Scroll)
+        AOS.init({ duration: 1000, once: false });
+
+        // Custom Cursor Movement
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Particles.js Config
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00f2fe" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#7000ff", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 2 }
             }
-        }
-        // Hapus isi h1 dulu baru jalankan animasi
-        document.getElementById("nama-kelas").innerHTML = "";
-        typeWriter();
+        });
     </script>
 </body>
 </html>
