@@ -1,546 +1,270 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Elite Class | Official Website</title>
+    <title>The Infinite Class | Digital Universe</title>
     
-    <!-- Fonts and Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
     <style>
         :root {
-            --primary: #00f2fe;
-            --secondary: #7000ff;
-            --accent: #ff006e;
-            --bg: #030005;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-            --text: #ffffff;
-            --shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+            --accent: #ff00c1;
+            --main: #00fff0;
+            --dark: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
             overflow-x: hidden;
-            transition: background-color 0.5s, color 0.5s;
         }
 
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
+        /* Background Animasi Plasma */
+        #canvas-plasma {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-        }
-
-        .dark-mode-toggle:hover {
-            box-shadow: var(--shadow);
-        }
-
-        .dark-mode-toggle i {
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        /* Particles Background */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
+            filter: blur(50px);
+            opacity: 0.5;
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s, width 0.1s, height 0.1s;
-        }
-
-        .cursor.hover {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(0, 242, 254, 0.2);
-        }
-
-        /* Navbar */
+        /* Navbar Modern */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 50px;
+            top: 20px; left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 100px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
-            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: logoGlow 3s ease-in-out infinite alternate;
-        }
+        .logo { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--main); letter-spacing: 2px; }
 
-        @keyframes logoGlow {
-            0% { filter: drop-shadow(0 0 5px var(--primary)); }
-            50% { filter: drop-shadow(0 0 15px var(--secondary)); }
-            100% { filter: drop-shadow(0 0 25px var(--accent)); }
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary);
-        }
-
-        /* Hero Section */
+        /* Hero Section dengan Glitch */
         .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(112, 0, 255, 0.3) 0%, rgba(255, 0, 110, 0.1) 50%, transparent 70%);
-            position: relative;
-            overflow: hidden;
+            perspective: 1000px;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
-            background-size: cover;
-            opacity: 0.1;
-            z-index: -1;
-        }
-
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 6rem;
-            margin-bottom: 20px;
+        .glitch {
+            font-family: 'Syncopate', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
             text-transform: uppercase;
-            animation: heroGlow 2s ease-in-out infinite alternate;
-            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @keyframes heroGlow {
-            from { text-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary); }
-            to { text-shadow: 0 0 40px var(--primary), 0 0 80px var(--accent); }
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            opacity: 0.8;
-        }
-
-        .hero .cta-button {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            color: var(--bg);
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: var(--shadow);
-        }
-
-        .hero .cta-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px var(--primary);
-        }
-
-        /* Sections */
-        .section {
-            padding: 120px 10%;
-            text-align: center;
             position: relative;
+            text-shadow: 0.05em 0 0 var(--accent), -0.025em -0.05em 0 var(--main),
+                         0.025em 0.05em 0 #fffc00;
+            animation: glitch 500ms infinite;
         }
 
-        .section h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            margin-bottom: 50px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 var(--accent), -0.05em -0.025em 0 var(--main); }
+            15% { text-shadow: -0.05em -0.025em 0 var(--accent), 0.025em 0.025em 0 var(--main); }
+            100% { text-shadow: -0.025em 0.05em 0 var(--accent), -0.025em -0.05em 0 var(--main); }
         }
 
-        /* Glass Cards */
-        .grid {
+        /* Floating Cards Section */
+        .section { padding: 100px 5%; text-align: center; }
+        h2.title { font-family: 'Syncopate', sans-serif; margin-bottom: 50px; font-size: 2rem; color: var(--main); }
+
+        .container-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
-        .glass-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 50px 30px;
-            border-radius: 25px;
-            backdrop-filter: blur(20px);
-            transition: 0.5s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .glass-card:hover::before {
-            left: 100%;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.3);
-        }
-
-        .glass-card i {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            transition: 0.3s;
-        }
-
-        .glass-card:hover i {
-            color: var(--accent);
-            transform: scale(1.2);
-        }
-
-        .glass-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .glass-card p {
-            opacity: 0.8;
-        }
-
-        /* About Section */
-        #about .glass-card {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 60px;
-        }
-
-        /* Structure Section */
-        #structure .grid {
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        }
-
-        /* Gallery */
-        .gallery-slider {
-            margin-top: 50px;
-            position: relative;
-        }
-
-        .gallery-item {
-            height: 400px;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-            filter: brightness(0.7);
-        }
-
-        .overlay-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--text);
-            opacity: 0;
-            transition: 0.5s;
-            font-weight: bold;
-            font-size: 1.5rem;
-            text-shadow: 0 0 10px var(--bg);
-        }
-
-        .gallery-item:hover .overlay-text {
-            opacity: 1;
-        }
-
-        /* Testimonials */
-        #testimonials .testimonial {
-            background: var(--glass);
-            border: 1px solid var(--border);
+        .neo-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
             padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-            margin: 20px 0;
-            transition: 0.3s;
-        }
-
-        #testimonials .testimonial:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
-        }
-
-        /* Contact Form */
-        #contact form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #contact input, #contact textarea {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            color: var(--text);
-            font-family: 'Poppins', sans-serif;
-        }
-
-        #contact button {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            color: var(--bg);
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        #contact button:hover {
-            box-shadow: var(--shadow);
-        }
-
-        /* Footer */
-        footer {
-            padding: 50px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            background: rgba(0, 0, 0, 0.8);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
             backdrop-filter: blur(10px);
         }
 
-        footer p {
-            opacity: 0.8;
+        .neo-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--main);
+            box-shadow: 0 20px 40px rgba(0, 255, 240, 0.15);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            nav {
-                padding: 20px;
-            }
-            .nav-links {
-                display: none;
-            }
-            .section {
-                padding: 80px 5%;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-            }
+        .neo-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
+
+        /* Gallery Neon */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .pic {
+            border-radius: 15px;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: 0.4s;
+            cursor: pointer;
+            border: 2px solid transparent;
         }
 
-        .fade-in-up {
-            animation: fadeInUp 1s ease-out;
+        .pic:hover {
+            border-color: var(--main);
+            transform: rotate(2deg) scale(1.05);
+            z-index: 10;
         }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #666;
+        }
+
+        /* Tombol Mengambang */
+        .btn-join {
+            background: linear-gradient(45deg, var(--main), var(--accent));
+            padding: 15px 40px;
+            border-radius: 50px;
+            color: black;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 40px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-join:hover { box-shadow: 0 0 30px var(--main); transform: scale(1.1); }
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
-    <div class="cursor"></div>
-    <div class="dark-mode-toggle" onclick="toggleDarkMode()">
-        <i class="fas fa-moon"></i>
-    </div>
+
+    <canvas id="canvas-plasma"></canvas>
 
     <nav>
-        <div class="logo">ELITE CLASS</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#structure">Structure</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="logo">GEN-ALPHA</div>
+        <div style="font-size: 0.8rem; letter-spacing: 1px;">EST. 2026</div>
     </nav>
 
-    <header class="hero" id="home">
-        <h1 data-aos="zoom-in">X - RPL 1</h1>
-        <p data-aos="fade-up" data-aos-delay="200">The Next Generation of Technology & Innovation</p>
-        <button class="cta-button" data-aos="fade-up" data-aos-delay="400" onclick="scrollToSection('#about')">EXPLORE NOW</button>
-    </header>
+    <section class="hero" id="home">
+        <div class="glitch" data-text="X-RPL 1">X-RPL 1</div>
+        <p style="letter-spacing: 5px; opacity: 0.6; margin-top: 20px;">DIGITAL SUPREMACY</p>
+        <a href="#about" class="btn-join">EXPLORE UNIVERSE</a>
+    </section>
 
     <section class="section" id="about">
-        <h2 data-aos="fade-down">ABOUT US</h2>
-        <div class="glass-card" data-aos="fade-up">
-            <p>Kami bukan sekadar teman sekelas, kami adalah keluarga besar yang berjuang bersama untuk masa depan. Dengan semangat kreativitas dan teknologi, kami siap mengguncang dunia. Bergabunglah dalam perjalanan kami menuju inovasi tanpa batas!</p>
+        <h2 class="title" data-aos="fade-up">CORE MISSION</h2>
+        <div class="neo-card" data-aos="zoom-in" style="max-width: 800px; margin: 0 auto;">
+            <p style="font-size: 1.2rem; line-height: 1.8;">Membangun masa depan melalui barisan kode dan kreativitas tanpa batas. Kami bukan sekadar kelas, kami adalah node utama dalam jaringan inovasi.</p>
         </div>
     </section>
 
-    <section class="section" id="structure">
-        <h2 data-aos="fade-down">CLASS STRUCTURE</h2>
-        <div class="grid">
-            <div class="glass-card" data-aos="flip-left">
-                <i class="fas fa-crown"></i>
-                <h3>PRESIDENT</h3>
+    <section class="section">
+        <h2 class="title" data-aos="fade-up">CLASS MASTERS</h2>
+        <div class="container-grid">
+            <div class="neo-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-bolt"></i>
+                <h3>LEADER</h3>
                 <p>Nama Ketua Kelas</p>
             </div>
-            <div class="glass-card" data-aos="flip-left" data-aos-delay="200">
-                <i class="fas fa-handshake"></i>
-                <h3>VICE PRESIDENT</h3>
-                <p>Nama Wakil Ketua</p>
+            <div class="neo-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-shield-halved"></i>
+                <h3>CO-LEADER</h3>
+                <p>Nama Wakil</p>
             </div>
-            <div class="glass-card" data-aos="flip-left" data-aos-delay="400">
-                <i class="fas fa-pen-nib"></i>
-                <h3>SECRETARY</h3>
+            <div class="neo-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-code"></i>
+                <h3>SCRIBE</h3>
                 <p>Nama Sekretaris</p>
             </div>
-            <div class="glass-card" data-aos="flip-left" data-aos-delay="600">
-                <i class="fas fa-wallet"></i>
-                <h3>TREASURER</h3>
+            <div class="neo-card" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-vault"></i>
+                <h3>TREASURY</h3>
                 <p>Nama Bendahara</p>
             </div>
         </div>
     </section>
 
-    <section class="section" id="testimonials">
-        <h2 data-aos="fade-down">TESTIMONIALS</h2>
-        <div class="testimonial" data-aos="fade-up">
-            <p>"Kelas ini luar biasa! Kami belajar banyak tentang teknologi dan persahabatan."</p>
-            <h4>- Siswa A</h4>
-        </div>
-        <div class="testimonial" data-aos="fade-up" data-aos-delay="200">
-            <p>"Inovasi dan kreativitas di sini membuat setiap hari menyenangkan."</p>
-            <h4>- Siswa B</h4>
+    <section class="section">
+        <h2 class="title" data-aos="fade-up">MEMORY DATA</h2>
+        <div class="gallery-container">
+            <div class="pic" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=500')" data-aos="flip-right"></div>
+            <div class="pic" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=500')" data-aos="flip-left"></div>
+            <div class="pic" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=500')" data-aos="flip-right"></div>
+            <div class="pic" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=500')" data-aos="flip-left"></div>
         </div>
     </section>
 
-    <section class="section" id="gallery">
-        <h2 data-aos="fade-down">CLASS GALLERY</h2>
-        <div class="gallery-slider">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Study Time">
-                <div class="overlay-text">Study Time</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80" alt="Togetherness">
-                <div class="overlay-text">Togetherness</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format
+    <footer>
+        <p>SYSTEM DESIGNED BY <span style="color:var(--main)">SENYUMAN MIO</span> // 2026</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800 });
+
+        // Efek Plasma Background (Animasi tanpa library berat)
+        const canvas = document.getElementById('canvas-plasma');
+        const ctx = canvas.getContext('2d');
+        let time = 0;
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.onresize = resize;
+        resize();
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const x = Math.sin(time) * 100 + canvas.width / 2;
+            const y = Math.cos(time * 0.5) * 100 + canvas.height / 2;
+
+            const grd = ctx.createRadialGradient(x, y, 0, x, y, 400);
+            grd.addColorStop(0, '#00fff0');
+            grd.addColorStop(1, 'transparent');
+
+            ctx.fillStyle = grd;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const x2 = Math.cos(time) * 150 + canvas.width / 2;
+            const y2 = Math.sin(time * 0.8) * 150 + canvas.height / 2;
+
+            const grd2 = ctx.createRadialGradient(x2, y2, 0, x2, y2, 500);
+            grd2.addColorStop(0, '#ff00c1');
+            grd2.addColorStop(1, 'transparent');
+
+            ctx.fillStyle = grd2;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            time += 0.02;
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
