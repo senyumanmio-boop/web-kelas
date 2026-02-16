@@ -211,7 +211,16 @@
 
         footer { padding: 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; color: #666; }
     </style>
-   
+   .cursor {
+    color: var(--main);
+    animation: blink 0.7s infinite;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
 </head>
 <body>
     <script>
@@ -241,9 +250,9 @@
 
     <section class="hero">
     <div class="glitch">ETHEREAL XI</div>
-    <p style="letter-spacing: 5px; opacity: 0.8; height: 20px;">
-        <span id="typing-text"></span><span class="cursor">|</span>
-    </p>
+    <p style="letter-spacing: 5px; opacity: 0.8; height: 20px; font-weight: 500;">
+    <span id="typing-text"></span><span class="cursor">|</span>
+</p>
     <a href="#about" class="btn-join">AYO DI KLIK</a>
 </section>
 
@@ -454,5 +463,57 @@
         }
         animate();
     </script>
+    <script>
+    const textElement = document.getElementById("typing-text");
+    // Kamu bisa ganti atau tambah kalimat di dalam kurung kotak ini
+    const phrases = [
+        "SMAIT DARUSSALAM 01 BATAM",
+        "GENERASI KREATIF & INOVATIF",
+        "WE ARE NOT JUST A CLASS, WE ARE FAMILY",
+        "ETH-XI: BEYOND THE LIMITS"
+    ];
+    
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 100;
+
+    function typeEffect() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typeSpeed = 50; 
+        } else {
+            textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typeSpeed = 150;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            typeSpeed = 2000; // Berhenti sebentar pas kalimat selesai ngetik
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typeSpeed = 500;
+        }
+
+        setTimeout(typeEffect, typeSpeed);
+    }
+
+    // Jalankan fungsinya saat halaman selesai dimuat
+    window.onload = function() {
+        typeEffect();
+        // Kalau loader kamu masih ada, pastikan fungsi loader tidak tabrakan
+        const loader = document.getElementById("loader");
+        if(loader) {
+            setTimeout(() => {
+                loader.classList.add("loader-hidden");
+            }, 2000);
+        }
+    };
+</script>
 </body>
 </html>
